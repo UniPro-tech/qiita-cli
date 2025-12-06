@@ -9,11 +9,16 @@
   "bugs": {
     "url": "https://github.com/unipro-tech/qiita-cli/issues"
   },
-  "repository": "git@github.com:unipro-tech/qiita-cli.git",
-  "author": {
-    "name": "Yuito Akatsuki",
-    "email": "yuito@yuito-it.jp"
-  },
+  "repository": "https://github.com/unipro-tech/qiita-cli",
+  "contributors": [
+    {
+      "name": "Qiita Inc."
+    },
+    {
+      "name": "Yuito Akatsuki",
+      "email": "yuito@yuito-it.jp"
+    }
+  ],
   "license": "Apache-2.0",
   "bin": {
     "qiita": "dist/main.js"
