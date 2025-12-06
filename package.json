@@ -1,18 +1,24 @@
 {
-  "name": "@yuito-it/qiita-cli",
+  "name": "@unipro-tech/qiita-cli",
   "version": "1.7.0-fork.0",
   "description": "Qiita CLI is a tool that allows you to write, preview and publish articles on Qiita from local environment.",
   "keywords": [
     "Qiita"
   ],
-  "homepage": "https://github.com/increments/qiita-cli",
+  "homepage": "https://github.com/unipro-tech/qiita-cli",
   "bugs": {
-    "url": "https://github.com/increments/qiita-discussions/discussions"
+    "url": "https://github.com/unipro-tech/qiita-cli/issues"
   },
-  "repository": "git@github.com:increments/qiita-cli.git",
-  "author": {
-    "name": "Qiita Inc."
-  },
+  "repository": "https://github.com/unipro-tech/qiita-cli",
+  "contributors": [
+    {
+      "name": "Qiita Inc."
+    },
+    {
+      "name": "Yuito Akatsuki",
+      "email": "yuito@yuito-it.jp"
+    }
+  ],
   "license": "Apache-2.0",
   "bin": {
     "qiita": "dist/main.js"
