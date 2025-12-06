@@ -2,6 +2,10 @@
 
 # Qiita CLI、Qiita Preview へようこそ！
 
+> [!IMPORTANT]
+> このパッケージはフォークです。
+> 株式会社Qiita様より正式にリリースされているものは [increments/qiita-cli](https://github.com/increments/qiita-cli) をご覧ください。
+
 Qiita CLI とは、手元の環境で記事の執筆・プレビュー・投稿ができるツールです。
 Qiita CLI を使うことで、普段お使いのエディタなどを使って記事の執筆・投稿がしやすくなります。
 
@@ -46,12 +50,14 @@ Node.js をはじめて使う場合はインストールする必要がありま
 
 > [!WARNING]
 > Qiita公式で提供している Qiita CLI の npm package 名は **@qiita/qiita-cli** となります。
+> また、このパッケージは **フォークであり、公式に公開されているものではありません**。
+> このフォークの npm package 名は **@yuito-it/qiita-cli** となります。
 > その他は異なるパッケージがインストールされてしまいます。必ずご確認の上、インストールしてください。
 
 Qiita のコンテンツを管理したいディレクトリで、以下のコマンドを実行します。
 
 ```console
-npm install @qiita/qiita-cli --save-dev
+npm install @yuito-it/qiita-cli --save-dev
 ```
 
 以下のコマンドでバージョンが表示されればインストール完了です。
@@ -65,7 +71,7 @@ npx qiita version
 Qiita CLI をアップデートする場合は以下のコマンドを実行します。
 
 ```console
-npm install @qiita/qiita-cli@latest
+npm install @yuito-it/qiita-cli@fork
 ```
 
 ## Qiita CLI のセットアップ方法について
@@ -125,13 +131,17 @@ npx qiita preview
 ### 記事ファイルの配置について
 
 1 つの記事の内容は、1 つの markdown ファイル（◯◯.md）で管理します。  
-記事ファイルは`public`ディレクトリ内に含める必要があります。
+記事ファイルは`public`ディレクトリ内もしくはその配下のディレクトリ内に含める必要があります。
 
 ```console
 .
 └─ public
    ├── newArticle001.md
-   └── newArticle002.md
+   ├── newArticle002.md
+   └── adventCalendar
+       ├── day1.md
+       └── 2025
+           └── day1.md 
 ```
 
 ## Qiita CLI で記事を管理する
@@ -200,6 +210,9 @@ Qiita CLI、Qiita Preview から記事の削除はできません。
 [Qiita](https://qiita.com)上で記事の削除を行なえます。
 
 ## GitHub で記事を管理する
+
+> [!CAUTION]
+> フォーク版の機能である**フォルダー分けは機能しません**。
 
 ### GitHub の設定について
 
