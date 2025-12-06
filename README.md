@@ -51,13 +51,13 @@ Node.js をはじめて使う場合はインストールする必要がありま
 > [!WARNING]
 > Qiita公式で提供している Qiita CLI の npm package 名は **@qiita/qiita-cli** となります。
 > また、このパッケージは **フォークであり、公式に公開されているものではありません**。
-> このフォークの npm package 名は **@yuito-it/qiita-cli** となります。
+> このフォークの npm package 名は **@unipro-tech/qiita-cli** となります。
 > その他は異なるパッケージがインストールされてしまいます。必ずご確認の上、インストールしてください。
 
 Qiita のコンテンツを管理したいディレクトリで、以下のコマンドを実行します。
 
 ```console
-npm install @yuito-it/qiita-cli --save-dev
+npm install @unipro-tech/qiita-cli --save-dev
 ```
 
 以下のコマンドでバージョンが表示されればインストール完了です。
@@ -71,7 +71,7 @@ npx qiita version
 Qiita CLI をアップデートする場合は以下のコマンドを実行します。
 
 ```console
-npm install @yuito-it/qiita-cli@fork
+npm install @unipro-tech/qiita-cli@fork
 ```
 
 ## Qiita CLI のセットアップ方法について
@@ -141,7 +141,7 @@ npx qiita preview
    └── adventCalendar
        ├── day1.md
        └── 2025
-           └── day1.md 
+           └── day1.md
 ```
 
 ## Qiita CLI で記事を管理する
