@@ -36,5 +36,4 @@ jobs:
         run: npm install -g npm@latest
       - name: Publish package
         run: |
-          npm publish --access public
-          npm dist-tag add @yuito-it/qiita-cli@${RELEASED_PACKAGE_VERSION} fork
+          npm publish --access public --tag fork
