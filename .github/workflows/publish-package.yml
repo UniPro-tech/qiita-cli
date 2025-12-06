@@ -31,9 +31,9 @@ jobs:
       - run: yarn run build
         env:
           NODE_ENV: "production"
+      - name: Upgrade npm to latest version
+        run: npm install -g npm@latest
       - name: Publish package
         run: |
-          yarn publish --access public
+          npm publish --access public
           npm dist-tag add @yuito-it/qiita-cli@${RELEASED_PACKAGE_VERSION} fork
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
