@@ -5,11 +5,11 @@
   "keywords": [
     "Qiita"
   ],
-  "homepage": "https://github.com/unipro-tech/qiita-cli",
+  "homepage": "https://github.com/UniPro-tech/qiita-cli",
   "bugs": {
-    "url": "https://github.com/unipro-tech/qiita-cli/issues"
+    "url": "https://github.com/UniPro-tech/qiita-cli/issues"
   },
-  "repository": "https://github.com/unipro-tech/qiita-cli",
+  "repository": "https://github.com/UniPro-tech/qiita-cli",
   "contributors": [
     {
       "name": "Qiita Inc."
