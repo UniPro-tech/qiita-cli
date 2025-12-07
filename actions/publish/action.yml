@@ -1,6 +1,6 @@
 name: "Publish articles to Qiita"
 description: "Publish articles to Qiita using qiita-cli"
-author: "Qiita Inc."
+author: "All-Japan Digital Creative Club UniProject"
 
 inputs:
   root:
@@ -22,7 +22,7 @@ runs:
       with:
         node-version: "20.16.0"
     - name: Install qiita-cli
-      run: npm install -g @qiita/qiita-cli@v1.7.0
+      run: npm install -g @unipro-tech/qiita-cli@fork
       shell: bash
     - name: Publish articles
       run: qiita publish --all --root ${{ inputs.root }}
