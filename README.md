@@ -75,7 +75,7 @@ npx qiita version
 Qiita CLI をアップデートする場合は以下のコマンドを実行します。
 
 ```console
-npm install @unipro-tech/qiita-cli@fork
+npm install @unipro-tech/qiita-cli@latest
 ```
 
 ## Qiita CLI のセットアップ方法について
