@@ -336,4 +336,8 @@ https://github.com/increments/qiita-discussions/discussions/561
 
 ## 不具合・ご意見は Discussions へ
 
+> [!IMPORTANT]
+> このパッケージはフォークです。
+> **このフォークでのみ提供されている機能に関してはこのリポジトリのIssueへお書きください**
+
 不具合・ご意見等ございましたら[Qiita Discussions](https://github.com/increments/qiita-discussions/discussions)へお寄せください。
