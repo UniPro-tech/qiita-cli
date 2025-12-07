@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: increments/qiita-cli/actions/publish@v1
+      - uses: UniPro-tech/qiita-cli/actions/publish@fork
         with:
           qiita-token: \${{ secrets.QIITA_TOKEN }}
           root: "."
