@@ -36,5 +36,4 @@ jobs:
         run: npm install -g npm@latest
       - name: Publish package
         run: |
-          npm publish --access public --tag fork
-          npm dist-tag add @unipro-tech/qiita-cli@fork latest
+          npm publish --access public --tag latest
