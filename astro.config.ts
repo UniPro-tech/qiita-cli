@@ -23,6 +23,24 @@ export default defineConfig({
       editLink: {
         baseUrl: "https://github.com/UniPro-tech/qiita-cli/edit/docs/",
       },
+      head: [
+        {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://www.googletagmanager.com/gtag/js?id=G-5X5X69Q27P",
+          },
+        },
+        {
+          tag: "script",
+          content: `
+        window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5X5X69Q27P');`,
+        },
+      ],
       sidebar: [
         {
           label: "はじめに",
