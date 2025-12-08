@@ -9,6 +9,7 @@ spec:
     - namePattern: "qiita-cli-document"
       images:
         - alias: "qiita-cli-document"
-          imageName: "registry.uniproject.jp/common/qiita-cli-document:x.x.x-x"
+          imageName: "registry.uniproject.jp/common/qiita-cli-document"
           commonUpdateSettings:
-            updateStrategy: "semver"
+            updateStrategy: "newest-build"
+            ignoreTags: ["latest", "master"]

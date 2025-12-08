@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: registry.uniproject.jp/common/qiita-cli-document:1.0.0
+          image: registry.uniproject.jp/common/qiita-cli-document:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
