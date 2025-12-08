@@ -4,12 +4,13 @@ description: Get started building your docs site with Starlight.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
   title: Qiita CLI ドキュメント<br/>(UniPro Edition)
-  tagline: Qiitaを快適に執筆できるCLI ツール
+  tagline: |
+    Qiitaを快適に執筆できるCLI ツール
   image:
     file: ../../assets/qiita-icon.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: クイックスタート
+      link: /release/installation
       icon: right-arrow
     - text: npm Package Page
       link: https://www.npmjs.com/package/@unipro-tech/qiita-cli
@@ -17,9 +18,22 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card, CardGrid, Aside } from "@astrojs/starlight/components";
 
-## Next steps
+<Aside type="caution">
+このドキュメントは現在整備中です。内容に不足や誤りがある可能性がありますのでご了承ください。
+また、npmパッケージのREADMEも併せてご参照ください。
+- [Qiita CLI (UniPro Edition) - npm](https://www.npmjs.com/package/@unipro-tech/qiita-cli)
+</Aside>
+
+<Aside type="note">  
+**Qiita CLI (UniPro Edition)** は、[Qiita公式CLI](https://github.com/qiita/qiita-cli)をベースに、デジタル創作サークルUniProjectが改良を加えたものです。
+UniPro Editionは非公式の派生版であり、Qiita社とは一切関係ありません。
+公式にない機能に関する質問等は、リポジトリIssuesにて受け付けています。
+- [Qiita CLI (UniPro Edition) - GitHubリポジトリ](https://github.com/UniPro-tech/qiita-cli)
+</Aside>
+
+## Features
 
 <CardGrid stagger>
   <Card title="好きなエディターで書ける" icon="pencil">

@@ -1,0 +1,29 @@
+---
+title: 変更を公開する
+description: Qiita に記事を公開する方法を説明します。
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Qiita CLI を使用して、ローカルで作成・編集した記事を Qiita に公開することができます。以下の手順で行います。
+
+## 公開コマンドを実行する
+以下のコマンドを実行して、記事を Qiita に公開します。
+
+<Tabs>
+  <TabItem label="npx">
+  ```bash
+npx qiita publish --all
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+  bunx qiita publish --all
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+yarn qiita publish --all
+  ```
+  </TabItem>
+</Tabs>

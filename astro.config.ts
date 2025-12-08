@@ -25,15 +25,27 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "Guides",
+          label: "はじめに",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
+            { label: "クイックスタート", slug: "release/installation" },
+            {
+              label: "公式との変更点",
+              slug: "release/whats-changes",
+            },
           ],
         },
         {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
+          label: "ガイド",
+          items: [
+            // Each item here is one entry in the navigation menu.
+            { label: "記事をダウンロードする", slug: "guides/pull" },
+            { label: "記事を作成する", slug: "guides/new" },
+            { label: "記事を公開する", slug: "guides/publish" },
+          ],
+        },
+        {
+          label: "リファレンス",
+          items: [{ label: "ディレクトリ構造", slug: "reference/directory" }],
         },
       ],
     }),

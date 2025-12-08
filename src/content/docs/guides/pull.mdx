@@ -1,0 +1,36 @@
+---
+title: 記事をダウンロードする
+description: Qiita から記事をダウンロードする方法を説明します。
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Qiita CLI を使用して、Qiita から記事をローカル環境にダウンロードすることができます。以下の手順で行います。
+
+## ダウンロードコマンドを実行する
+
+これにより、`public`ディレクトリ配下に記事がダウンロードされます。
+
+<Tabs>
+  <TabItem label="npx">
+  ```bash
+npx qiita pull
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+  bunx qiita pull
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+yarn qiita pull
+  ```
+  </TabItem>
+</Tabs>
+
+## よくある質問
+
+### Q. QiitaのWeb側で編集しましたが反映されません
+
+A. `--force`オプションを付けて再度実行してください。ローカルの変更が破棄され、Qiita側の最新の内容で上書きされます。

@@ -1,0 +1,83 @@
+---
+title: クイックスタート
+description: インストール方法と簡単な始め方を説明します。
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Qiita CLI のインストール自体は公式のものとまるで変わりません。
+
+## パッケージをインストールする
+
+まずはパッケージをインストールします。お使いのパッケージマネージャーに応じて、以下のコマンドを実行してください。
+
+<Tabs>
+  <TabItem label="npm">
+  ```bash
+npm install @unipro-tech/qiita-cli --save-dev
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+bun @unipro-tech/qiita-cli init
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+yarn add @unipro-tech/qiita-cli --dev
+  ```
+  </TabItem>
+</Tabs>
+
+## プロジェクトを初期化する
+
+次に、プロジェクトを初期化します。以下のコマンドを実行してください。
+
+このコマンドにより、以下のファイルが生成されます。
+- `.github/workflows/publish.yml` - GitHub Actions のワークフローファイル
+- `qiita.config.json` - Qiita CLI の設定ファイル
+- `.gitignore` - Git 管理から除外するファイルを指定するファイル
+
+<Tabs>
+  <TabItem label="npx">
+  ```bash
+npx qiita init
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+  bunx qiita init
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+  yarn qiita init
+  ```
+  </TabItem>
+</Tabs>
+
+## ログインする
+
+Qiita CLI を使用するには、Qiita アカウントでログインする必要があります。
+https://qiita.com/settings/tokens/new でパーソナルアクセストークンを発行します。
+また、トークンの権限には「read_qiita」と「write_qiita」を設定します。
+
+その後、以下のコマンドを実行してください。
+
+<Tabs>
+  <TabItem label="npx">
+  ```bash
+npx qiita login
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+  bunx qiita login
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+  yarn qiita login
+  ```
+  </TabItem>
+</Tabs>

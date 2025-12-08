@@ -1,0 +1,49 @@
+---
+title: 記事を作成する
+description: ローカルに記事を作成する方法を説明します。
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Qiita CLI を使用して、ローカル環境に新しい記事を作成することができます。以下の手順で行います。
+
+## 作成コマンドを実行する
+
+`<FileName>`には、Markdownファイル名を入力します。
+
+<Tabs>
+  <TabItem label="npx">
+  ```bash
+npx qiita new <FileName>
+  ```
+  </TabItem>
+  <TabItem label="bun">
+  ```bash
+  bunx qiita new <FileName>
+  ```
+  </TabItem>
+  <TabItem label="yarn">
+  ```bash
+yarn qiita new <FileName>
+  ```
+  </TabItem>
+</Tabs>
+
+## ファイルを編集する
+
+作成されるファイルはこのような内容になっています。
+
+```markdown
+---
+title: newArticle001 # 記事のタイトル
+tags:
+  - "" # タグ（ブロックスタイルで複数タグを追加できます）
+private: false # true: 限定共有記事 / false: 公開記事
+updated_at: "" # 記事を投稿した際に自動的に記事の更新日時に変わります
+id: null # 記事を投稿した際に自動的に記事のUUIDに変わります
+organization_url_name: null # 関連付けるOrganizationのURL名
+slide: false # true: スライドモードON / false: スライドモードOFF
+ignorePublish: false # true: `publish`コマンドにおいて無視されます（Qiitaに投稿されません） / false: `publish`コマンドで処理されます（Qiitaに投稿されます）
+---
+# new article body
+```
