@@ -1,0 +1,14 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: qiita-cli-document-image-updater
+  namespace: argocd
+spec:
+  namespace: argocd
+  applicationRefs:
+    - namePattern: "qiita-cli-document"
+      images:
+        - alias: "qiita-cli-document"
+          imageName: "registry.uniproject.jp/common/qiita-cli-document:x.x.x-x"
+          commonUpdateSettings:
+            updateStrategy: "semver"

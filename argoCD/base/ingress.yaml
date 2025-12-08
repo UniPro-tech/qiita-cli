@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qiita-cli-document-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: le-cf-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: qiita-cli.uniproject.jp
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qiita-cli-document
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - qiita-cli.uniproject.jp
+      secretName: qiita-cli-document-tls
