@@ -1,40 +1,37 @@
 ---
-title: Welcome to Starlight
+title: Qiitaを快適に執筆できる CLI ツール
 description: Get started building your docs site with Starlight.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  title: Qiita CLI ドキュメント<br/>(UniPro Edition)
+  tagline: Qiitaを快適に執筆できるCLI ツール
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/qiita-icon.png
   actions:
     - text: Example Guide
       link: /guides/example/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: npm Package Page
+      link: https://www.npmjs.com/package/@unipro-tech/qiita-cli
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+  <Card title="好きなエディターで書ける" icon="pencil">
+    Qiita CLI は Markdown 形式で記事を書くため、好きなエディターで執筆できます。
+  </Card>
+  <Card title="見やすいプレビュー" icon="document">
+    `qiita preview` コマンドで、ブラウザ上で見やすいプレビューを確認できます。
+  </Card>
+  <Card title="便利なディレクトリ管理" icon="seti:folder">
+    公式のCLIにはない、ディレクトリに記事をまとめて管理する機能があります。
+  </Card>
+	<Card title="GitHub連携" icon="github">
+		GitHubと連携して、リポジトリ内の記事をQiitaに投稿・更新できます。
 	</Card>
 </CardGrid>
