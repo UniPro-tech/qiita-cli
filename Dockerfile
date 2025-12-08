@@ -13,6 +13,6 @@ FROM httpd:alpine
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
 # 404 page
-RUN echo 'ErrorDocument 404 /index.html' >> /usr/local/apache2/conf/httpd.conf
+RUN echo 'ErrorDocument 404 /404.html' >> /usr/local/apache2/conf/httpd.conf
 
 EXPOSE 80
