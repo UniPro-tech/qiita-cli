@@ -34,6 +34,7 @@ jobs:
             type=raw,value=latest
             type=sha,prefix=sha-,suffix=,format=short
       - name: Push Docker image
+        id: build-and-push
         uses: docker/build-push-action@v5
         with:
           file: ./Dockerfile
@@ -43,3 +44,22 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=registry.uniproject.jp/official/qiita-cli-document:buildcache
           cache-to: type=registry,ref=registry.uniproject.jp/official/qiita-cli-document:buildcache,mode=max
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Sign Docker images with GitHub OIDC (cosign keyless)
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          COSIGN_EXPERIMENTAL: "true"
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images="${images}${tag}@${DIGEST} "
+          done
+
+          cosign sign --yes ${images}
