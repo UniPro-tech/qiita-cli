@@ -229,9 +229,6 @@ const articlesListItemStyle = css({
   padding: `${getSpace(3 / 4)}px ${getSpace(5 / 2)}px ${getSpace(3 / 4)}px ${getSpace(
     3,
   )}px`,
-  padding: `${getSpace(3 / 4)}px ${getSpace(5 / 2)}px ${getSpace(3 / 4)}px ${getSpace(
-    3,
-  )}px`,
   whiteSpace: "nowrap",
   textOverflow: "ellipsis",
 
