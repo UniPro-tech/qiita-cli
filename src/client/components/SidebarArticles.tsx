@@ -11,12 +11,19 @@ import {
   Weight,
 } from "../lib/variables";
 import { ItemViewModel } from "../../lib/view-models/items";
+import { fileTreeFromItemViewModels } from "../lib/fileTree";
 
 interface Props {
   items: ItemViewModel[];
   sortType: (typeof SortType)[keyof typeof SortType];
   articleState: "Draft" | "Public" | "Private";
 }
+
+export type TreeNode = {
+  name: string;
+  items: ItemViewModel[];
+  children: { [name: string]: TreeNode };
+};
 
 export const SortType = {
   ByUpdatedAt: 1,
@@ -60,41 +67,9 @@ export const SidebarArticles = ({ items, sortType, articleState }: Props) => {
   }, [isDetailsOpen]);
 
   // build recursive tree from item.parent (segments array)
-  const topLevelItems: ItemViewModel[] = [];
-
-  type TreeNode = {
-    name: string;
-    items: ItemViewModel[];
-    children: { [name: string]: TreeNode };
-  };
-
-  const roots: { [name: string]: TreeNode } = {};
-
-  const addToTree = (segments: string[], item: ItemViewModel) => {
-    const rootName = segments[0];
-    if (!roots[rootName])
-      roots[rootName] = { name: rootName, items: [], children: {} };
-    let node = roots[rootName];
-    const rest = segments.slice(1);
-    if (rest.length === 0) {
-      node.items.push(item);
-      return;
-    }
-    for (const seg of rest) {
-      if (!node.children[seg])
-        node.children[seg] = { name: seg, items: [], children: {} };
-      node = node.children[seg];
-    }
-    node.items.push(item);
-  };
-
-  items.forEach((item) => {
-    if (!item.parent || item.parent.length === 0) {
-      topLevelItems.push(item);
-    } else {
-      addToTree(item.parent, item);
-    }
-  });
+  const fileTree = fileTreeFromItemViewModels(items);
+  const topLevelItems = fileTree.items;
+  const roots: { [name: string]: TreeNode } = fileTree.children;
 
   const countSubtreeItems = (node: TreeNode): number =>
     node.items.length +
@@ -102,8 +77,9 @@ export const SidebarArticles = ({ items, sortType, articleState }: Props) => {
 
   const renderNode = (node: TreeNode, path: string) => {
     const cmp = compare[sortType];
+    const isNested = path.includes("/");
     return (
-      <li key={path}>
+      <li key={path} css={isNested ? articleDetailsNestedItemStyle : undefined}>
         <details css={articleDetailsStyle} open>
           <summary css={articleSummaryStyle}>
             {node.name}
@@ -111,13 +87,16 @@ export const SidebarArticles = ({ items, sortType, articleState }: Props) => {
               {countSubtreeItems(node)}
             </span>
           </summary>
-          <ul>
+          <ul css={articleDetailsNestedStyle}>
             {Object.values(node.children)
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((child) => renderNode(child, `${path}/${child.name}`))}
 
             {[...node.items].sort(cmp).map((item) => (
-              <li key={item.items_show_path}>
+              <li
+                key={item.items_show_path}
+                css={articleDetailsNestedItemStyle}
+              >
                 <Link css={articlesListItemStyle} to={item.items_show_path}>
                   <MaterialSymbol
                     fill={item.modified && articleState !== "Draft"}
@@ -143,7 +122,7 @@ export const SidebarArticles = ({ items, sortType, articleState }: Props) => {
         {ArticleState[articleState]}
         <span css={articleSectionTitleCountStyle}>{items.length}</span>
       </summary>
-      <ul>
+      <ul css={articleDetailsListStyle}>
         {Object.values(roots)
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((r) => renderNode(r, r.name))}
@@ -178,17 +157,19 @@ const articleDetailsStyle = css({
   "&[open] > summary::before": {
     content: "'expand_more'",
   },
-  // nested lists: draw vertical guide lines inside the padded area
-  "& ul": {
-    listStyle: "none",
-    margin: 0,
-    paddingLeft: getSpace(1),
-  },
-  "& ul ul": {
-    position: "relative",
-    paddingLeft: getSpace(3),
-  },
-  "& ul ul::before": {
+});
+
+const articleDetailsListStyle = css({
+  listStyle: "none",
+  margin: 0,
+  paddingLeft: getSpace(1),
+});
+
+const articleDetailsNestedStyle = css({
+  position: "relative",
+  paddingLeft: getSpace(3),
+
+  "&:before": {
     content: "''",
     position: "absolute",
     left: getSpace(3),
@@ -197,25 +178,10 @@ const articleDetailsStyle = css({
     width: 1,
     backgroundColor: Colors.gray20,
   },
-  "& ul ul > li": {
-    paddingLeft: getSpace(1.5),
-  },
-  "& ul ul ul": {
-    position: "relative",
-    paddingLeft: getSpace(4),
-  },
-  "& ul ul ul::before": {
-    content: "''",
-    position: "absolute",
-    left: getSpace(3),
-    top: 0,
-    bottom: 0,
-    width: 1,
-    backgroundColor: Colors.gray20,
-  },
-  "& ul ul ul > li": {
-    paddingLeft: getSpace(1.5),
-  },
+});
+
+const articleDetailsNestedItemStyle = css({
+  paddingLeft: getSpace(3 / 2), //小数点は無効なので12pxだとこの様な形になります 1 = 8px
 });
 
 const articleSummaryStyle = css({
@@ -260,6 +226,9 @@ const articlesListItemStyle = css({
   fontSize: Typography.body2,
   gap: getSpace(1),
   lineHeight: LineHeight.bodyDense,
+  padding: `${getSpace(3 / 4)}px ${getSpace(5 / 2)}px ${getSpace(3 / 4)}px ${getSpace(
+    3,
+  )}px`,
   padding: `${getSpace(3 / 4)}px ${getSpace(5 / 2)}px ${getSpace(3 / 4)}px ${getSpace(
     3,
   )}px`,
